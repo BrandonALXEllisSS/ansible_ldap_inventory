@@ -1,6 +1,5 @@
 ---
 plugin: ldap_inventory
-domain: 'ldaps://adserver.domain.local:636'
 auth_type: simple
 username: user@domain.local
 password: "password"
