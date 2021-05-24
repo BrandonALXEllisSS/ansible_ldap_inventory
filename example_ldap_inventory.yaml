@@ -1,7 +1,7 @@
 ---
 plugin: ldap_inventory
+domain: 'ldaps://DUMMY.INTERNAL:636'
 auth_type: simple
-username: user@domain.local
-password: "password"
-search_ou: "OU=Servers,OU=Windows,DC=domain,DC=local"
-account_age: 15 
+username: DUMMY@DUMMY.INTERNAL
+password: DUMMY
+search_ou: "OU=DUMMY,OU=DUMMY,DC=DUMMY,DC=DUMMY"
