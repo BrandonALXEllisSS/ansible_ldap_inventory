@@ -56,7 +56,7 @@ DOCUMENTATION = '''
                 - "  dc1.local.com"
                 - "  ldaps://dc1.local.com:636"
                 - "  ldap://dc1.local.com"
-             required: False
+             required: True
              type: str
          port: 
              description: 
@@ -268,7 +268,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
         """
         Set config options
         """
-        self.domain = self.get_option('domain')
+        self.domain =  os.getenv('LDAP_DOMAIN') or self.get_option('domain')
         self.port = self.get_option('port')
         self.username = os.getenv('LDAP_USER') or self.get_option('username')
         self.password = os.getenv('LDAP_PASS') or self.get_option('password')
@@ -280,7 +280,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
         self.exclude_groups = self.get_option('exclude_groups')
         self.exclude_hosts = self.get_option('exclude_hosts')
         self.use_fqdn = self.get_option('fqdn_format')
-        self.auth_type = self.get_option('auth_type')        
+        self.auth_type = os.getenv('LDAP_AUTH_TYPE') or self.get_option('auth_type')        
         self.scheme = self.get_option('scheme')  
         self.ldap_filter = self.get_option('ldap_filter')
         self.group_membership_filter = self.get_option('group_membership_filter')

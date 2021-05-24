@@ -1,7 +1,7 @@
 ---
 plugin: ldap_inventory
-domain: 'ldaps://DUMMY.INTERNAL:636'
-auth_type: simple
-username: DUMMY@DUMMY.INTERNAL
-password: DUMMY
-search_ou: "OU=DUMMY,OU=DUMMY,DC=DUMMY,DC=DUMMY"
+domain: 'ldaps://DUMMY.INTERNAL:636' # LDAP_DOMAIN
+auth_type: simple # LDAP_AUTH_TYPE
+username: DUMMY@DUMMY.INTERNAL #LDAP_USER
+password: DUMMY #LDAP_PASS
+search_ou: "OU=DUMMY,OU=DUMMY,DC=DUMMY,DC=DUMMY" #SEARCH_OU
