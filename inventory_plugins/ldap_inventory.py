@@ -56,7 +56,7 @@ DOCUMENTATION = '''
                 - "  dc1.local.com"
                 - "  ldaps://dc1.local.com:636"
                 - "  ldap://dc1.local.com"
-             required: True
+             required: False
              type: str
          port: 
              description: 
