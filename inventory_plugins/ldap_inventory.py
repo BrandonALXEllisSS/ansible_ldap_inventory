@@ -329,17 +329,16 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
         self.ldap_session.set_option(ldap.OPT_REFERRALS, 0)
  
         if self.auth_type == 'simple':
-            cmd = ['kinit', self.username]
-            error_code = subprocess.run(cmd, input=self.password.encode(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
-            if error_code > 0:
-                raise AnsibleError("kinit failure")
             try:
                 self.ldap_session.bind_s(self.username, self.password, ldap.AUTH_SIMPLE)
             except ldap.LDAPError as err:
                 raise AnsibleError("Failed to simple bind against LDAP host '%s': %s " % (conn_url, to_native(err)))
         else:
+            cmd = ['kinit', self.username]
+            error_code = subprocess.run(cmd, input=self.password.encode(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+            if error_code > 0:
+                raise AnsibleError("kinit failure")
             try:
-                
                 self.ldap_session.sasl_gssapi_bind_s()
             except ldap.AUTH_UNKNOWN as err:
                 # The SASL GSSAPI binding is not installed, e.g. cyrus-sasl-gssapi. Give a better error message than what python-ldap provides
