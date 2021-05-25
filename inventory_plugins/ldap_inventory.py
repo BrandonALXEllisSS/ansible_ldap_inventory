@@ -484,6 +484,12 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
             
 
             self.inventory.add_host(hostName)
+
+            #Set appropriate variables so that we can connect to the host
+            if self.auth_type == 'gssapi' :
+                self.inventory.set_variable(hostName, "ansible_connection", "winrm")
+                self.inventory.set_variable(hostName, "ansible_port", 5985)
+                self.inventory.set_variable(hostName, "ansible_winrm_transport", "kerberos")
             
             for i in range(len(ouGroups)):
                 if i > 0 :
