@@ -1,6 +1,8 @@
 ---
 plugin: ldap_inventory
 domain: 'DUMMY.INTERNAL' # LDAP_DOMAIN
+username: 'DUMMY'
+password: 'DUMMY'
 search_ou: "OU=DUMMY,OU=DUMMY,DC=DUMMY,DC=DUMMY" #SEARCH_OU
 auth_type: gssapi
 fqdn_format: True
