@@ -334,8 +334,6 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
             except ldap.LDAPError as err:
                 raise AnsibleError("Failed to simple bind against LDAP host '%s': %s " % (conn_url, to_native(err)))
         else:
-            print(self.username, self.password)
-            print( os.getenv('LDAP_USER'),  os.getenv('LDAP_PASS'))
             cmd = ['kinit', self.username]
             error_code = subprocess.run(cmd, input=self.password.encode(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
             if error_code > 0:
