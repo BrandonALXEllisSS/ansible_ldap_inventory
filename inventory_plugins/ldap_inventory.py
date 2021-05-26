@@ -336,10 +336,10 @@ class InventoryModule(BaseInventoryPlugin, Constructable):
         else:
             print(self.username, self.password)
             print( os.getenv('LDAP_USER'),  os.getenv('LDAP_PASS'))
-            cmd = ['kinit', self.username]
-            error_code = subprocess.run(cmd, input=self.password.encode(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
-            if error_code > 0:
-                raise AnsibleError("kinit failure")
+            # cmd = ['kinit', self.username]
+            # error_code = subprocess.run(cmd, input=self.password.encode(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
+            # if error_code > 0:
+            #     raise AnsibleError("kinit failure")
             try:
                 self.ldap_session.sasl_gssapi_bind_s()
             except ldap.AUTH_UNKNOWN as err:
