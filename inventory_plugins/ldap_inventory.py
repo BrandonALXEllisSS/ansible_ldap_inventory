@@ -86,12 +86,12 @@ DOCUMENTATION = '''
                 - "Examples:"
                 - "  username@local.com"
                 - "  domain\\\\username"
-             required: True
+             required: False
          password:
              description: 
                 - "LDAP user password used to bind our LDAP search."
                 - "Example: Password123!"
-             required: True
+             required: False
          ldap_filter:
              description: 
                 - "Filter used to find computer objects."
